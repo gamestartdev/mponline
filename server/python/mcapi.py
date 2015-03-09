@@ -1,3 +1,5 @@
+print('Importing mcapi.py...')
+
 from net.canarymod import Canary
 from net.canarymod import LineTracer
 from net.canarymod.api.world.blocks import BlockType

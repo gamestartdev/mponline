@@ -1,33 +1,36 @@
 
 import os
 import shutil
+import stat
+import subprocess
 import sys
 import time
 
-print('Caution, removing Minecraft config in')
-for i in range(10,-1,-1):
+print('Caution, replacing plug-in:')
+for i in range(9,0,-1):
 	print(i)
 	time.sleep(1)
 
 pathToMacuyikoProject = '../MinecraftPythonConsole-fork'
 pathToServerPlugin = os.path.join(pathToMacuyikoProject,'ServerPythonInterpreterPlugin')
 
-stuffToCopy = ['lib-common','lib-canary','python']
-
 if not os.path.exists(pathToServerPlugin):
 	print('Oops! Missing Macuyiko\'s code. Clone from gamestartdev on github for a stable version.')
 	sys.exit(1)
-
 	
-SERVER_PATH = os.path.join('.','server')
-if os.path.exists(SERVER_PATH):
-	shutil.rmtree(SERVER_PATH)	#for some reason shutil.copytree freaks out if destination already exists. for safety I guess.
-os.mkdir(SERVER_PATH)
+def exterminate(function, path):
+	os.chmod(path, stat.S_IWRITE)
+	os.remove(path)
 	
+SERVER_PATH = os.path.join('.','server')	
+stuffToCopy = ['lib-common','lib-canary','python']
 for lib in stuffToCopy:
 	source = os.path.join(pathToServerPlugin, lib)
 	destination = os.path.join(SERVER_PATH, lib)
+	if os.path.exists(destination):
+		shutil.rmtree(destination,onerror=exterminate)
 	shutil.copytree( source, destination )
+
 
 #folder structure is silly. we need the server jar at the root.
 jarname 	= 'CanaryMod-1.2.0.jar'
@@ -41,5 +44,6 @@ pluginsfolder	= os.path.join(SERVER_PATH, 'plugins')
 if not os.path.exists(pluginsfolder):
 	os.mkdir(pluginsfolder)
 shutil.copyfile(pluginsource, os.path.join(pluginsfolder,'console.jar'))
+
 
 print('Done! Ready to launch server from directory: ' + SERVER_PATH)
