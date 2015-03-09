@@ -1,12 +1,12 @@
 
 import os
 import shutil
+import sys
 import time
 
-
-countdown = 10
-print('WARNING! This is about to reset the server! Halt in the next ' + str(countdown) + ' seconds to stop!')
-for i in range(countdown,-1,-1):
+print('Caution, removing Minecraft installation.')
+print('Countdown to removal:')
+for i in range(10,-1,-1):
 	print(i)
 	time.sleep(1)
 
@@ -15,7 +15,11 @@ pathToServerPlugin = os.path.join(pathToMacuyikoProject,'ServerPythonInterpreter
 
 stuffToCopy = ['lib-common','lib-canary','python']
 
+if not os.path.exists(pathToServerPlugin):
+	print('Oops! Missing Macuyiko\'s code. Clone from gamestartdev on github for a stable version.')
+	sys.exit(1)
 
+	
 SERVER_PATH = os.path.join('.','server')
 if os.path.exists(SERVER_PATH):
 	shutil.rmtree(SERVER_PATH)	#for some reason shutil.copytree freaks out if destination already exists. for safety I guess.
