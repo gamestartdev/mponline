@@ -1,4 +1,4 @@
-print('Importing mcapi.py...')
+print('Importing mcapi...')
 
 from net.canarymod import Canary
 from net.canarymod import LineTracer
@@ -91,7 +91,7 @@ def cube(*args, **kwargs):
 			for z in range(size):
 				setblock(x + r['x'], y + r['y'], z + r['z'], r['type'])
 
-def bolt(*args):
+def bolt(*args, **kwargs):
 	r = parseargswithpos(args, kwargs)
 	WORLD.makeLightningBolt(r['x'], r['y'], r['z'])
 
