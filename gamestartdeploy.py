@@ -4,8 +4,7 @@ import shutil
 import sys
 import time
 
-print('Caution, removing Minecraft installation.')
-print('Countdown to removal:')
+print('Caution, removing Minecraft config in')
 for i in range(10,-1,-1):
 	print(i)
 	time.sleep(1)
