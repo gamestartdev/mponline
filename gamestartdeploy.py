@@ -50,6 +50,6 @@ if os.path.exists(CLIENT_PATH):
 	shutil.rmtree(CLIENT_PATH,onerror=exterminate)
 shutil.copytree(pathToWebEditor, CLIENT_PATH)
 
+print('Done!')
 print('Ready to launch server from directory: ' + SERVER_PATH)
 print('Ready to launch client from directory: ' + CLIENT_PATH)
-print('Done!')
