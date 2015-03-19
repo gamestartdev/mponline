@@ -8,8 +8,8 @@ Write your Python spells with the <a href="http://ec2-54-164-208-168.compute-1.a
 
     from mcapi import *
     
-    setblock(0, 80, 0, BlockType.GoldBlock)
-    cube(0, 90, 0, BlockType.DiamondBlock, 6)
+    setblock(0, 80, 0, GOLD_BLOCK)
+    cube(0, 90, 0, DIAMOND_BLOCK, 6)
     
     player = getplayer('heyandy889')
     explosion( player.x, player.y, player.z, 10 )
