@@ -174,4 +174,25 @@
     <type>group</type>
     <value>true</value>
   </entry>
+  <entry>
+    <id>25</id>
+    <owner>admins</owner>
+    <path>*</path>
+    <type>group</type>
+    <value>true</value>
+  </entry>
+  <entry>
+    <id>26</id>
+    <owner>mods</owner>
+    <path>canary.super.ignoreRestrictions</path>
+    <type>group</type>
+    <value>true</value>
+  </entry>
+  <entry>
+    <id>27</id>
+    <owner>players</owner>
+    <path>canary.world.build</path>
+    <type>group</type>
+    <value>true</value>
+  </entry>
 </permission>
