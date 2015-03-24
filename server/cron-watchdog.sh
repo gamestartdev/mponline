@@ -1,15 +1,12 @@
 #!/bin/sh
 #install with crontab -e
-#*/10 * * * * /home/ubuntu/mponline/server/cron-watchdog.sh
-
-
-export CANARY_ROOT="/home/ubuntu/mponline/server/"
+#*/5 * * * * /home/ubuntu/mponline/server/cron-watchdog.sh
 
 ps auxw | grep CanaryMod | grep -v grep > /dev/null
 
-
 if [ $? != 0 ]
 then
-	cd $CANARY_ROOT
-        screen -S canary python start-server.py
+	cd ~/mponline/server
+	touch cron-was-here.txt
+	python start-server.py
 fi
