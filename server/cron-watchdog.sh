@@ -11,5 +11,5 @@ ps auxw | grep CanaryMod | grep -v grep > /dev/null
 if [ $? != 0 ]
 then
 	cd $CANARY_ROOT
-        python start-server.py
+        screen -S canary python start-server.py
 fi
