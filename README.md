@@ -4,7 +4,7 @@ Today's Minecraft server URL
 
     ec2-54-164-208-168.compute-1.amazonaws.com
 
-Write your Python spells with the <a href="http://ec2-54-164-208-168.compute-1.amazonaws.com" target="_blank">online code editor</a>.
+Write your Python spells with the <a href="http://ec2-54-164-208-168.compute-1.amazonaws.com" target="_blank">online code editor</a>. See the example code below!
 
     from mcapi import *
     
@@ -17,4 +17,7 @@ Write your Python spells with the <a href="http://ec2-54-164-208-168.compute-1.a
     for i in range(5):
         bolt( player.x, player.y, player.z )
         sleep(1)
-
+    
+    targetblock = lookingat(player)
+    cube(targetblock.x, targetblock.y, targetblock.z, ICE, 4)
+    
