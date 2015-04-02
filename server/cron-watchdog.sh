@@ -2,7 +2,7 @@
 #install with crontab -e
 #*/5 * * * * /home/ubuntu/mponline/server/cron-watchdog.sh
 
-ps auxw | grep CanaryMod | grep -v grep > /dev/null
+ps auxw | grep java | grep -v grep > /dev/null
 
 if [ $? != 0 ]
 then
