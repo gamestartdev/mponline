@@ -1,10 +1,10 @@
 # mponline
 
-Today's Minecraft server URL
+Connect to the Minecraft server address
 
-    ec2-54-164-208-168.compute-1.amazonaws.com
+    ec2-52-7-28-40.compute-1.amazonaws.com
 
-Write your Python spells with the <a href="http://ec2-54-164-208-168.compute-1.amazonaws.com" target="_blank">online code editor</a>. See the example code below!
+Write your Python spells with the <a href="http://ec2-52-7-28-40.compute-1.amazonaws.com" target="_blank">online code editor</a>. See the example code below!
 
     from mcapi import *
     
