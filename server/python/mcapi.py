@@ -130,7 +130,7 @@ def randomplayer():
 	return getplayer(choice(pl))
 
 def yell(message):
-	SERVER.broadcastMessage(message)
+	SERVER.broadcastMessage(str(message))
 
 def time(time):
 	WORLD.setTime(time)
@@ -234,3 +234,5 @@ def registerhook(hookCls, execfunc):
 	# >>> registerhook(BlockDestroyHook,hookfunc)
 	Canary.hooks().registerHook(PluginEventListener(), Canary.manager().getPlugin('CanaryConsole'), hookCls, EventDispatcher(execfunc), Priority.NORMAL)
 
+def unregisterhooks():
+	Canary.hooks().unregisterPluginListeners(Canary.manager().getPlugin('CanaryConsole'))
