@@ -2,9 +2,9 @@
 
 Connect to the Minecraft server address
 
-    ec2-52-7-28-40.compute-1.amazonaws.com
+    ec2-52-5-146-170.compute-1.amazonaws.com
 
-Write your Python spells with the <a href="http://ec2-52-7-28-40.compute-1.amazonaws.com" target="_blank">online code editor</a>. See the example code below!
+Write your Python spells with the <a href="http://ec2-52-5-146-170.compute-1.amazonaws.com/" target="_blank">online code editor</a>. See the example code below!
 
     from mcapi import *
     
