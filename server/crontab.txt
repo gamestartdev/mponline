@@ -1,2 +1,0 @@
-# use 'crontab -e' and paste the following line into the list of cron jobs.
-*/1 * * * * cd ~/mponline/server && screen -dmS minecraft-server java -jar CanaryMod-1.2.0.jar
