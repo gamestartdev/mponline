@@ -10,7 +10,9 @@ from net.canarymod.commandsys import Command, CommandListener, CanaryCommand
 from net.canarymod.chat import MessageReceiver
 from net.canarymod.plugin import Priority, PluginListener
 from net.canarymod.hook import Dispatcher
+from net.canarymod.hook.player import PlayerArmSwingHook
 from blocks import *
+from items import *
 
 import time		# legacy compatibility. several teachers expect "time.sleep()" as opposed to "sleep()"
 from time import *
@@ -111,6 +113,7 @@ def bless(*args, **kwargs):
 def lookingat(player):
 	return LineTracer(player).getTargetBlock()
 
+#------------------------------------------------------------------------------
 class ChatCommand(Command):
 	def __init__(self, names, min=2, max=2, permissions=[""], toolTip="", description="", parent="", helpLookup="", searchTerms=[], version=1):
 		self.var_names = names
@@ -141,6 +144,14 @@ class CanaryChatCommand(CanaryCommand):
 	def execute(self, caller, parameters):
 		self.execfunc(caller, parameters)
 
+def registercommand(name, min, max, execfunc):	#thanks Seppe!
+	# Use like this:
+	# >>> def functiontest(caller, params):
+	# ...	 yell(params[1])
+	# >>> registercommand("test", 2, 2, functiontest)
+	Canary.commands().registerCommand(CanaryChatCommand(ChatCommand(names=[name], min=min, max=max), SERVER, execfunc), SERVER, True)
+	
+#------------------------------------------------------------------------------
 class PluginEventListener(PluginListener):
 	pass
 
@@ -150,14 +161,7 @@ class EventDispatcher(Dispatcher):
 	def execute(self, listener, hook):
 		self.execfunc(listener, hook)
 
-def registercommand(name, min, max, execfunc):
-	# Use like this:
-	# >>> def functiontest(caller, params):
-	# ...	 yell(params[1])
-	# >>> registercommand("test", 2, 2, functiontest)
-	Canary.commands().registerCommand(CanaryChatCommand(ChatCommand(names=[name], min=min, max=max), SERVER, execfunc), SERVER, True)
-
-def registerhook(hookCls, execfunc):
+def registerhook(hookCls, execfunc):	#thanks Seppe!
 	# Use like this:
 	# >>> from net.canarymod.hook.player import BlockDestroyHook
 	# >>> def hookfunc(listener, hook):
@@ -167,3 +171,12 @@ def registerhook(hookCls, execfunc):
 
 def unregisterhooks():
 	Canary.hooks().unregisterPluginListeners(Canary.manager().getPlugin('CanaryConsole'))
+
+def enchantitem(item=IRON_AXE):
+	
+	def _playerarmswing_callback(listener, hook):
+		itemSwung = hook.getPlayer().getItemHeld()
+		if(itemSwung != None and itemSwung.getType() == item):
+			yell(str(hook.getPlayer().getDisplayName()) + " swung a " + str(itemSwung.getType().getMachineName()))
+
+	registerhook(PlayerArmSwingHook, _playerarmswing_callback)
