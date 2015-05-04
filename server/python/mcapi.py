@@ -2,7 +2,6 @@ print('Importing command definitions...')
 
 from net.canarymod import Canary
 from net.canarymod import LineTracer
-from net.canarymod.api.world.blocks import BlockType
 from net.canarymod.api.world.effects import Particle
 from net.canarymod.api import GameMode
 from net.canarymod.api.world.position import Location
@@ -11,7 +10,9 @@ from net.canarymod.commandsys import Command, CommandListener, CanaryCommand
 from net.canarymod.chat import MessageReceiver
 from net.canarymod.plugin import Priority, PluginListener
 from net.canarymod.hook import Dispatcher
+from blocks import *
 
+import time		# legacy compatibility. several teachers expect "time.sleep()" as opposed to "sleep()"
 from time import *
 from random import *
 from math import *
@@ -23,76 +24,6 @@ NOON 	= 6000
 EVENING = 14000
 NIGHT 	= 18000
 
-#full list of BlockTypes available in JavaDocs on canarymod.net
-AIR                 = BlockType.Air
-STONE               = BlockType.Stone
-GRASS               = BlockType.Grass
-DIRT                = BlockType.Dirt
-COBBLESTONE         = BlockType.Cobble
-WOOD_PLANKS         = BlockType.OakWood
-SAPLING             = BlockType.OakSapling
-BEDROCK             = BlockType.Bedrock
-WATER_FLOWING       = BlockType.WaterFlowing
-WATER               = WATER_FLOWING
-WATER_STATIONARY    = BlockType.Water
-LAVA_FLOWING        = BlockType.LavaFlowing
-LAVA                = LAVA_FLOWING
-LAVA_STATIONARY     = BlockType.Lava
-SAND                = BlockType.Sand
-GRAVEL              = BlockType.Gravel
-GOLD_ORE            = BlockType.GoldOre
-IRON_ORE            = BlockType.IronOre
-COAL_ORE            = BlockType.CoalOre
-WOOD                = BlockType.OakLog
-LEAVES              = BlockType.OakLeaves
-GLASS               = BlockType.Glass
-LAPIS_LAZULI_ORE    = BlockType.LapisOre
-LAPIS_LAZULI_BLOCK  = BlockType.LapisBlock
-SANDSTONE           = BlockType.Sandstone
-BED                 = BlockType.Bed
-COBWEB              = BlockType.Web
-GRASS_TALL          = BlockType.TallGrass
-WOOL                = BlockType.WhiteWool
-FLOWER_YELLOW       = BlockType.Dandelion
-FLOWER_CYAN         = BlockType.BlueOrchid
-MUSHROOM_BROWN      = BlockType.BrownMushroom
-MUSHROOM_RED        = BlockType.RedMushroom
-GOLD_BLOCK          = BlockType.GoldBlock
-IRON_BLOCK          = BlockType.IronBlock
-STONE_SLAB_DOUBLE   = BlockType.DoubleStoneSlab
-STONE_SLAB          = BlockType.StoneSlab
-BRICK_BLOCK         = BlockType.BrickBlock
-TNT                 = BlockType.TNT
-BOOKSHELF           = BlockType.Bookshelf
-MOSS_STONE          = BlockType.MossyCobble
-OBSIDIAN            = BlockType.Obsidian
-TORCH               = BlockType.Torch
-FIRE                = BlockType.FireBlock
-STAIRS_WOOD         = BlockType.OakStairs
-CHEST               = BlockType.Chest
-DIAMOND_ORE         = BlockType.DiamondOre
-DIAMOND_BLOCK       = BlockType.DiamondBlock
-CRAFTING_TABLE      = BlockType.Workbench
-FARMLAND            = BlockType.Farmland
-FURNACE_INACTIVE    = BlockType.Furnace
-FURNACE_ACTIVE      = BlockType.BurningFurnace
-DOOR_WOOD           = BlockType.WoodenDoor
-LADDER              = BlockType.Ladder
-STAIRS_COBBLESTONE  = BlockType.StoneStairs
-DOOR_IRON           = BlockType.IronDoor
-REDSTONE_ORE        = BlockType.RedstoneOre
-SNOW                = BlockType.Snow
-ICE                 = BlockType.Ice
-SNOW_BLOCK          = BlockType.SnowBlock
-CACTUS              = BlockType.Cactus
-CLAY                = BlockType.Clay
-SUGAR_CANE          = BlockType.Reed
-FENCE               = BlockType.Fence
-GLOWSTONE_BLOCK     = BlockType.GlowStone
-STONE_BRICK         = BlockType.StoneBrick
-GLASS_PANE          = BlockType.GlassPane
-MELON               = BlockType.Melon
-FENCE_GATE          = BlockType.FenceGate
 
 def pos(positionable):
 	return positionable.getPosition()
