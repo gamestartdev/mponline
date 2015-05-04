@@ -172,11 +172,11 @@ def registerhook(hookCls, execfunc):	#thanks Seppe!
 def unregisterhooks():
 	Canary.hooks().unregisterPluginListeners(Canary.manager().getPlugin('CanaryConsole'))
 
-def enchantitem(item=IRON_AXE):
-	
+def enchantitem(student_enchantment, item=IRON_AXE):
+
 	def _playerarmswing_callback(listener, hook):
 		itemSwung = hook.getPlayer().getItemHeld()
 		if(itemSwung != None and itemSwung.getType() == item):
-			yell(str(hook.getPlayer().getDisplayName()) + " swung a " + str(itemSwung.getType().getMachineName()))
+			student_enchantment()
 
 	registerhook(PlayerArmSwingHook, _playerarmswing_callback)
