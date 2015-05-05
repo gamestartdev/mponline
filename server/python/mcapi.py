@@ -14,8 +14,8 @@ from net.canarymod.hook.player import PlayerArmSwingHook
 from blocks import *
 from items import *
 
-import time		# legacy compatibility. several teachers expect "time.sleep()" as opposed to "sleep()"
 from time import *
+import time		# legacy compatibility. several teachers expect "time.sleep()" as opposed to "sleep()"
 from random import *
 from math import *
 
